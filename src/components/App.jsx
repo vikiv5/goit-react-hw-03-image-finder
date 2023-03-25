@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import fetchImgApi from "./Api";
 import Notiflix from "notiflix";
 import Searchbar from "./Searchbar/Searchbar";
+import { ImageGallery } from "./ImageGallery/ImageGallery";
+
 
 
 
@@ -37,6 +39,10 @@ catch (error) {
   this.setState({isLoading:false})
  }}}
 
+
+ handleSearch = (searchQuery) => {
+  this.setState ({searchQuery,items : [], isLoading:false, error:false, page:1})
+ }
  render()
  {
   const {handleSearch}=this;
@@ -44,5 +50,7 @@ catch (error) {
   return(
     <>
     <Searchbar handleSearch={handleSearch}/>
+    {error &&(<p> Sorry , nothing was found </p>)}
+    {items && <ImageGallery items = {items} />}
 </>
   )}}
