@@ -14,10 +14,8 @@ export const SearchbarStyles = styled.header`
   padding-top: 12px;
   padding-bottom: 12px;
   color: #ffffff;
-  /* background-color: #3f51b5; */
-  background: linear-gradient(62.93deg, #97ccf0 19.68%, #5218fa 89.55%);
-  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  background-color: pink; 
+  
 `;
 
 
@@ -27,7 +25,7 @@ export const SearchForm = styled.form`
   width: 100%;
   max-width: 600px;
   background-color: #ffffff;
-  border-radius: 3px;
+  border-radius: 10px;
   overflow: hidden;
 `;
 

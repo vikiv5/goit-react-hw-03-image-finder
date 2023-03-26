@@ -43,9 +43,11 @@ if (prevState.searchQuery !==this.state.searchQuery||
   this.setState (state =>  ({
     items:[...state.items, ...data.hits]
   }));
+  if (!data.total){
+    alert ("sorry, no matches found")
   }
-catch (error) {
-  this.setState({error:true,isLoading:false})
+  }
+catch (error){
   console.log (error)
   }
 
@@ -67,15 +69,16 @@ onLoadMore =()=>{
  render()
  {
   const {handleSearch}=this;
-  const {items, isLoading,totalhits,error,currentLargeImageURL} = this.state;
+  const {items, isLoading,totalhits,currentLargeImageURL} = this.state;
   return(
     <>
     <Searchbar handleSearch={handleSearch}/>
-    {error && (<p> Sorry , nothing was found </p>)}
+    
     {isLoading &&<Loader/>}
     {items.length > 0 && <ImageGallery items={items} onClick={this.onOpenModalWithLargeImage}/>}
     {currentLargeImageURL && (<Modal onClose={this.onModalClose} url={currentLargeImageURL}/>)}
     {items.length >= 12 && items.length< totalhits && !isLoading && <Button onLoadMore={this.onLoadMore}/>}
+    
     
 
 </>

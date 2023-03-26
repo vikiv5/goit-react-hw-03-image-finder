@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import PropTypes from 'prop-types'
+import { MdSearch } from 'react-icons/md';
 
 import {
     SearchbarStyles,
@@ -34,7 +34,7 @@ export default class Searchbar extends Component {
         <SearchbarStyles>
           <SearchForm onSubmit={this.handleSubmit}>
             <SearchFormButton type="submit" aria-label="Search Button">
-            
+            <MdSearch size={25} />
             </SearchFormButton>
   
             <SearchFormInput
