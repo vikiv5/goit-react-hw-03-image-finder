@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import { BtnContainer, Btn } from './Button.styled';
 
-export const Button = ({ onClick }) => (
+export const Button = ({ onLoadMore}) => (
   <BtnContainer>
-    <Btn type="button" onClick={onClick}>
+    <Btn type="button" onClick={onLoadMore}>
       Load more...
     </Btn>
   </BtnContainer>

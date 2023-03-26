@@ -35,6 +35,7 @@ if (prevState.searchQuery !==this.state.searchQuery||
   }
 catch (error) {
   this.setState({error:true,isLoading:false})
+  console.log (error)
   }
 
  finally{
@@ -59,7 +60,7 @@ onLoadMore =()=>{
   return(
     <>
     <Searchbar handleSearch={handleSearch}/>
-    {error && <p> Sorry , nothing was found </p>}
+    {error && (<p> Sorry , nothing was found </p>)}
     {isLoading &&<Loader/>}
     {items && <ImageGallery items = {items} onClick={this.openModal} />}
     {items.length >= 12 && items.length< totalhits && !isLoading && <Button onLoadMore={this.onLoadMore}/>}
