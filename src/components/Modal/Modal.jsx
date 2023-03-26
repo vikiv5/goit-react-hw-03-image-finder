@@ -29,7 +29,7 @@ export default class Modal extends Component {
     return (
       <Overlay onClick={this.onOverlayClick}>
         <ModalWindow>
-          <img src={this.props.image} alt='' />
+          <img src={this.props.url} alt='' />
         </ModalWindow>
       </Overlay>
     );

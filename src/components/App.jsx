@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import fetchImgApi from "./Api";
 import Searchbar from "./Searchbar/Searchbar";
 import { ImageGallery } from "./ImageGallery/ImageGallery";
-//import Modal from "./Modal/Modal";
+import Modal from "./Modal/Modal";
 import { Loader } from "./Loader/Loader";
 import {Button} from "./Button/Button"
 
@@ -17,6 +17,17 @@ export default class App extends Component {
     
     
 
+  }
+  onOpenModalWithLargeImage = (url) => {
+    this.setState({
+      currentLargeImageURL: url,
+    })
+  }
+
+  onModalClose = () => {
+    this.setState({
+      currentLargeImageURL: "",
+    })
   }
 
 
@@ -56,13 +67,14 @@ onLoadMore =()=>{
  render()
  {
   const {handleSearch}=this;
-  const {items, isLoading,totalhits,error,} = this.state;
+  const {items, isLoading,totalhits,error,currentLargeImageURL} = this.state;
   return(
     <>
     <Searchbar handleSearch={handleSearch}/>
     {error && (<p> Sorry , nothing was found </p>)}
     {isLoading &&<Loader/>}
-    {items && <ImageGallery items = {items} onClick={this.openModal} />}
+    {items.length > 0 && <ImageGallery items={items} onClick={this.onOpenModalWithLargeImage}/>}
+    {currentLargeImageURL && (<Modal onClose={this.onModalClose} url={currentLargeImageURL}/>)}
     {items.length >= 12 && items.length< totalhits && !isLoading && <Button onLoadMore={this.onLoadMore}/>}
     
 
